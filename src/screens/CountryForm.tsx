@@ -5,7 +5,7 @@ export default function CountryForm({navigation}:any):React.JSX.Element{
   const [countryname,setcountryname] = useState('');
   const [Disabled,setDisabled] = useState(false);
   const handlechange = (text:string)=>{
-    if (/^[a-zA-Z]*$/.test(text)) {
+    if (/^[a-zA-Z ]*$/.test(text)) {
       setcountryname(text)
     }
   }
@@ -40,7 +40,6 @@ export default function CountryForm({navigation}:any):React.JSX.Element{
         placeholder="Enter Country Name"
         onChangeText={handlechange}
         value={countryname}
-        maxLength={10}
       />
       <View style={styles.btncontainer}>
         <TouchableOpacity

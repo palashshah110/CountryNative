@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Button, Image, ImageBackground, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function CountryDetails({navigation,route}:any):React.JSX.Element{
+  const APIKEY = process.env.APIKEY;
   const [weather,setweather] = useState({temp:0,speed:0,open:false});
   const handleClick = async (latlng: number[]) => {
     try {
-      const { main: { temp }, wind: { speed } } = await (await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=a80e7dc04639cfc4193d55970d07c503`)).json();
+      const { main: { temp }, wind: { speed } } = await (await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=${APIKEY}`)).json();
       setweather({ temp, speed, open: true });
     } catch (err) {
       setweather({...weather,open: false });
